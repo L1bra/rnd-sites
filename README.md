@@ -1,5 +1,5 @@
 # rnd-sites
-This program will create list of random websites and check if they exist. How he will create them will depends on the arguments.
+This program will create a list of random websites and check if they exist. How he will create them will depends on the arguments.
 # What its should do?
 + Create a txt file with list of random websites
 + Deduplicate
@@ -8,10 +8,10 @@ This program will create list of random websites and check if they exist. How he
 + if don't -> remove all files and directories (which was created ofc)
 # Arguments:
 ```
--p https , --protocol https     Choose http or https                    (default: https)
--l number, --letter number      How long site name will be (5-7 avrg)   (default: False)
--d .com, --domain .com          Domain: .com or .ru                     (default: .com)
--a 100, --address 100           How many addresses you need to create   (default: False)
+-p https ,  --protocol https     Choose http or https                    (default: https)
+-l number,  --letter number      How long site name will be (5-7 avrg)   (default: False)
+-d .com,    --domain .com        Domain: .com or .ru                     (default: .com)
+-a 100,     --address 100        How many addresses you need to create   (default: False)
 ```
 # Example:
 **Full:**
