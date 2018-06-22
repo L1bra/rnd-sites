@@ -9,7 +9,7 @@ This program will create a list of random websites and check if they exist. How 
 # Arguments:
 ```
 -p https ,  --protocol https     Choose http or https                    (default: https)
--l number,  --letter number      How long site name will be (5-7 avrg)   (default: False)
+-l number,  --letter 7           How long site name will be (5-7 avrg)   (default: False)
 -d .com,    --domain .com        Domain: .com or .ru                     (default: .com)
 -a 100,     --address 100        How many addresses you need to create   (default: False)
 ```
