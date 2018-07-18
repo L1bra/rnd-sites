@@ -9,14 +9,14 @@ This program will create a list of random websites and check if they exist. How 
 # Arguments:
 ```
 -p https ,  --protocol https     Choose http or https                    (default: https)
--l number,  --letter 7           How long site name will be (5-7 avrg)   (default: False)
--d .com,    --domain .com        Domain: .com or .ru                     (default: .com)
+-l 7,       --letter 7           Second level domain (5-7 avrg)          (default: False)
+-d .com,    --domain .com        Top-level Domain: .com or .ru           (default: .com)
 -a 100,     --address 100        How many addresses you need to create   (default: False)
 ```
 # Example:
 **Full:**
 ```
-python rnd.py -p https -l 5 -d .com -a 1000
+python rnd.py -p https -l 5 -d .com -a 100
 ```
 **Without defaults:**
 ```
