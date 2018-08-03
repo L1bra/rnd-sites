@@ -3,6 +3,7 @@ import requests
 import random
 import sys
 import os
+import re
 
 
 def parsing(oldpath, path):
@@ -20,13 +21,11 @@ def parsing(oldpath, path):
                 print("address {}: {} is not exist.".format(count + 1, url))
                 count += 1
 
-        print("{} addresses declined.".format(count))
+        print("{} addresses declined.\n".format(count))
 
-    finnaly = oldpath + '\sorted.txt'
-
-    if os.path.isfile(finnaly):
+    if os.path.isfile(final):
         print('File with existing addresses here: ')
-        print(finnaly)
+        print(oldpath + '\\' + final)
         os.remove('deduplicated.txt')
     else:
         os.remove('deduplicated.txt')
@@ -34,11 +33,8 @@ def parsing(oldpath, path):
         os.rmdir(path)
 
 
+
 def main():
-    abc = 'qwertyuiopasdfghjklzxcvbnm'
-    ls = list(abc)
-    random.shuffle(ls)
-    
     parser = argparse.ArgumentParser()
     
     parser.add_argument('-p', '--protocol', type=str, help='[http or https]', default='https')
@@ -49,11 +45,40 @@ def main():
 
     parse = parser.parse_args()
 
+    magic(parse) if not len(sys.argv) < 5 else print('Not enough arguments...')
+
+
+def magic(parse):
+    abc = 'qwertyuiopasdfghjklzxcvbnm'
+    ls = list(abc)
+    random.shuffle(ls)
+
     dr = 'txt'
-    # 'txt\\dump.txt'
+    global final
+    final = 'sorted.txt'
+    currdir = os.getcwd()
+
     if not os.path.isdir(dr):
-   	    os.mkdir(dr)
-    
+        os.mkdir(dr)
+        os.chdir(dr)
+    else:
+        files = os.listdir(dr)
+
+        os.chdir(dr)
+        txts = filter(lambda x: x.endswith('.txt'), files)
+
+        for x in txts:
+            txt = str(x)
+
+            if os.path.isfile(txt):
+                if not txt == final:
+                    os.remove(txt)
+                    print('file: {} was deleted from directory.'.format(txt))
+
+        print()
+
+    os.chdir(currdir)
+
     try:
         path = dr + '\\dump.txt'
 
@@ -62,10 +87,7 @@ def main():
                 result = ''.join([random.choice(ls) for _ in range(int(parse.letter) + 1)])
                 f.write(parse.protocol + '://' + result + parse.domain + '\n')
 
-        if len(sys.argv) < 5:
-            print('Not enough arguments..')
-        else:
-            deduplicate(dr)
+        deduplicate(dr)
 
     except ValueError as e:
         print(e)
